@@ -1,0 +1,40 @@
+###First add the Gazo artist
+POST http://localhost:8080/artists
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Gazo",
+  "password": "GazoTest"
+}
+
+###Then add another
+POST http://localhost:8080/artists
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "G-Eazy",
+  "password": "TheG123"
+}
+
+###Add a duplicate artist
+POST http://localhost:8080/artists
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "G-Eazy",
+  "password": "TheG123"
+}
+
+###Then retrieve all
+GET http://localhost:8080/artists
+
+> {%
+ client.test("Request executed successfully",() => {
+     client.assert(response.status === 200, 'Expected the request to be successful and got ' + response.status);
+     client.assert(response.contentType.mimeType === "application/json","Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+     client.assert(response.body.length === 2, 'Just 2 non-duplicate artists have been added to the application but received ' + response.body.length);
+ })
+ %}
