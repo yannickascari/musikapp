@@ -1,0 +1,236 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+.align {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.align-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  flex-direction: column;
+}
+
+.margin-center {
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden; /* Hide scrollbars */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--text-normal);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  z-index: 1;
+  background-color: var(--text-normal);
+}
+
+.button-danger {
+  background-color: var(--text-danger) !important;
+}
+
+.text-danger {
+  color: var(--text-danger);
+}
+
+.theme-dark {
+  --background-color: #36393f;
+  --side-menu-background-color: #2f3136;
+  --play-bar-background-color: #1e1e1f;
+  --input-color: #202225;
+  --label-color: #b9bbbe;
+  --text-normal: rgb(220, 221, 222);
+  --button-background-color: hsl(235, calc(85.6%), 64.7%);
+  --button-background-color-hover: hsl(235, calc(85.6%), 60%);
+  --not-quite-black: #23272a;
+  --text-danger: hsl(359, calc(82%), 73.9%);
+  --text-danger-hover: hsl(359, calc(82%), 70%);
+  --little-span-information-color: #72767d;
+  --text-link: hsl(197, calc(100%), 47.8%);
+  --play-bar-background: rgba(220, 221, 222, 0.47);
+  --background-color-fragment: #4c4e52;
+  --background-button-disabled: hsl(235, calc(1 * 85.6%), 64.7%);
+  --select-border: #777;
+  --select-focus: rgba(0, 0, 0, 0.55);
+  --select-arrow: var(--select-border);
+}
+
+input {
+  background: var(--input-color);
+  text-shadow: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  border: none;
+  color: var(--text-normal);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+button {
+  color: var(--text-normal);
+  background-color: var(--button-background-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: var(--background-button-disabled);
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+button:disabled:hover {
+  background-color: var(--background-button-disabled);
+
+}
+
+button:hover {
+  background-color: var(--button-background-color-hover);
+}
+
+button.button-danger:hover {
+  background-color: var(--text-danger-hover) !important;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+label {
+  color: var(--label-color);
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+.transparent-button {
+  background: transparent;
+  border: 1px solid rgba(220, 221, 222, 0.4);
+}
+
+.transparent-button:hover {
+  background: transparent;
+  border: 1px solid var(--text-normal);
+  cursor: auto;
+}
+
+select {
+  appearance: none;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  color: var(--label-color);
+  outline: none;
+  background-color: var(--input-color);
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: var(--input-color);
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+}
+
+.select::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+select,
+.select:after {
+  grid-area: select;
+}
+
+.select:after{
+  justify-self: end;
+}
+
+.select,
+.select::before,
+.select::after {
+  box-sizing: border-box;
+}
+
+select:focus + .focus {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 2px solid var(--select-focus);
+  border-radius: inherit;
+}
+
+.fit-height-width {
+  width: 100%;
+  height: 100%;
+}

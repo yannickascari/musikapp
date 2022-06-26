@@ -1,0 +1,102 @@
+.play-bar-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 0.4fr .8fr 0.7fr 3fr 1.9fr;
+  grid-template-rows: 1fr;
+}
+
+.song-description-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 0.1fr 1fr 1fr 0.1fr;
+  grid-template-columns: 1fr;
+  color: var(--text-normal);
+}
+
+.authors {
+  font-size: 11px;
+}
+
+.name {
+  font-size: 16px;
+  color: white;
+}
+
+.image {
+  margin-right: 15%;
+  box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+}
+
+.image-resize {
+  width: 65%;
+}
+
+.play-configuration-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-rows: 0.25fr 1fr 0.8fr;
+  grid-template-columns: 2fr 0.4fr 0.4fr 0.4fr 2fr;
+}
+
+.play-manager-container {
+  display: grid;
+  grid-template-columns: repeat(5,1fr) 3fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.skip-backward {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.play {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.skip-forward {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.bi-skip-backward-fill {
+  fill: var(--text-normal);
+  width: 35%;
+}
+
+.bi-play-circle-fill {
+  fill: var(--text-normal);
+  width: 55%;
+}
+
+.bi-play-circle-fill:hover{
+  transform: scale(1.05);
+}
+
+.bi-skip-forward-fill {
+  fill: var(--text-normal);
+  width: 35%;
+}
+
+.bi-skip-backward-fill:hover{
+  fill: white;
+  transform: scale(1.05);
+}
+
+.bi-skip-forward-fill:hover{
+  fill: white;
+  transform: scale(1.05);
+}
+
+.play-progress-bar{
+  grid-row: 3;
+  grid-column: 1/6;
+}
+
+.equalizer{
+  width: 100%;
+  height: 100%;
+}

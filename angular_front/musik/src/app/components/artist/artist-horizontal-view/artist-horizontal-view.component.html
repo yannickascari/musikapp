@@ -1,0 +1,11 @@
+<div (click)="goToArtistView(artist)" [style.border-radius]="borderRadiusStr" (mouseover)="hover = true" [class.margin-center]="alignHorizontally" (mouseleave)="hover = false" [ngStyle]="{'background': hover ? colorOnHover : backgroundColor}" *ngIf="artist" [style.height]="heightStr" [style.width]="widthStr" class="artist-horizontal-view-container">
+  <div class="avatar align">
+    <img class="margin-center avatar-resize" *ngIf="avatarUrl" [src]="avatarUrl" alt="avatar icon">
+  </div>
+  <div class="name align">
+    {{artist.name}}
+  </div>
+  <div class="followers-followings align">
+    {{artist.followers.length}} Followers - {{artist.followings.length}} Followings
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div (mouseover)="hover = true" (mouseleave)="hover = false" *ngIf="artist" [style.bb]="" [style.width]="sizeStr" [style.height]="sizeStr" class="artist-badge-view-container">
+  <div class="align">
+    <img class="margin-center" [style.width]="percentImageStr" [style.transform]="hover ? 'scale(1.05)' : 'scale(1)'" [style.cursor]="hover ? 'pointer' : 'auto'" [src]="avatarUrl">
+  </div>
+  <div [style.font-size]="fontSize"  class="text-center artist-name">
+    {{artist.name}}
+  </div>
+</div>

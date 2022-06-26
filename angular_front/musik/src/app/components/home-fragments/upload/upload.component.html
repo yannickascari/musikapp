@@ -1,0 +1,114 @@
+<div class="upload-container">
+  <div class="upload-form-container">
+    <div class="align form-title">
+      <h1 class="margin-center">Configure your future banger !</h1>
+    </div>
+    <div class="align">
+      <label for="audio" class="margin-center file-label">Select the audio file</label>
+
+      <input type="file"
+             id="audio"
+             accept="audio/mpeg" class="input-file" (change)="changeAudioFile($event)">
+    </div>
+    <div class="align">
+      <div class="text-white text-center file-input-show margin-center" *ngIf="audioFile">
+        {{audioFile.name}}
+      </div>
+    </div>
+    <div class="align">
+      <label for="miniature" class="margin-center file-label">Select the miniature file</label>
+      <input (change)="changeMiniatureFile($event)" type="file"
+             id="miniature"
+             accept="image/png, image/jpg, image/jpeg, image/jfif" class="input-file">
+    </div>
+    <div class="align">
+      <div class="text-white text-center file-input-show margin-center" *ngIf="miniatureFile">
+        {{miniatureFile.name}}
+      </div>
+    </div>
+    <div class="form-container margin-center">
+      <div class="align">
+        <label for="song-name" class="normal-label">
+          Song name
+        </label>
+        <input
+          id="song-name"
+          type="text"
+          [(ngModel)]="songName"
+          required/>
+      </div>
+      <div class="align">
+        <button class="open-modal-button" (click)="openModal = true">Add featured artists</button>
+      </div>
+      <div class="align">
+        <label class="select-label" for="category">Category</label>
+        <div class="select">
+          <select [(ngModel)]="selectedCategory" id="category">
+            <option [ngValue]="category" *ngFor="let category of categories">{{category.name}}</option>
+          </select>
+          <span class="focus"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="upload-preview-container">
+    <div class="align preview-title">
+      <h1 class="margin-center">Preview your banger !</h1>
+    </div>
+    <div class="preview-miniature-container align">
+      <img *ngIf="miniatureFile" [style.box-shadow]="boxShadowImg" alt="preview-song-miniature"
+           class="preview-miniature-img margin-center" [src]="previewMiniatureSrc"/>
+    </div>
+    <div class="preview-song-title-container align">
+      <h4 class="margin-center">
+        {{songName}}
+      </h4>
+    </div>
+    <div class="preview-song-container align">
+      <audio style="width: 85%" controls *ngIf="this.audioFile" class="margin-center" [src]="previewAudioSrc"></audio>
+    </div>
+    <div class="preview-features-container">
+      <div class="text-center preview-features-title align">
+        Featured artists
+      </div>
+      <div class="scrolling-wrapper">
+        <div style="width: 25%;height: 100%;display: inline-block" *ngFor="let artist of this.selectedFeaturedArtists">
+          <app-artist-badge-view fontSize="12px" [percentImage]="20" [artist]="artist"></app-artist-badge-view>
+        </div>
+      </div>
+    </div>
+    <div class="align save-button">
+        <button (click)="addSong()" class="save-button-btn margin-center">Save song</button>
+    </div>
+  </div>
+</div>
+<canvas width="300" height="300" id="cv" style="z-index: -111;display: none"></canvas>
+<app-modal overflowY="hidden" style="width: 100%;height: 100%" [height]="78" color="#36393f" [width]="60" [opened]="openModal">
+  <div class="modal-container">
+    <div class="align modal-title-wrapper">
+      <h1 class="margin-center modal-title">
+        Add some cool artists !
+      </h1>
+    </div>
+    <div class="modal-body-container">
+      <div class="search-input-modal-container modal-border">
+        <app-input-button (clickButton)="searchArtist($event)" [height]="50" [width]="80" inputPlaceHolder="Type the artist name" buttonText="Search"></app-input-button>
+      </div>
+      <div class="align">
+        <h3 class="text-center modal-body-right-title">Selected artists</h3>
+      </div>
+      <div style="width: 100%;height: 100%;" class="modal-border">
+        <app-artist-horizontal-view [disableRedirection]="true" (click)="selectArtist(artist)" [height]="15" *ngFor="let artist of this.searchedFeaturedArtists" [artist]="artist">
+        </app-artist-horizontal-view>
+      </div>
+      <div style="overflow-y: auto;width: 100%;height: 100%;">
+        <div style="width: 50%;height: 50%;display: inline-block;" *ngFor="let artist of this.selectedFeaturedArtists">
+          <app-artist-badge-view (click)="removeSelect(artist)" [artist]="artist"></app-artist-badge-view>
+        </div>
+      </div>
+    </div>
+    <div class="align footer-modal">
+      <button class="close-modal-button margin-center" (click)="openModal = false">All good !</button>
+    </div>
+  </div>
+</app-modal>

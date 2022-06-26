@@ -1,0 +1,49 @@
+<div class="base-container">
+  <form class="form-container" [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="align title">
+      <h1 style="grid-column: 2" class="text-center align">Register</h1>
+    </div>
+    <div class="align medium-width">
+      <label [class.text-danger]="!registerForm.controls['name'].valid && showError" for="name">
+        Name <span style="text-transform: lowercase" *ngIf="!registerForm.controls['name'].valid && showError">- Name must be at least 3 characters</span>
+      </label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        required/>
+    </div>
+    <div class="align medium-width">
+      <label [class.text-danger]="!registerForm.controls['email'].valid && showError" for="email">
+        Email <span style="text-transform: lowercase" *ngIf="!registerForm.controls['email'].valid && showError">- Email must respect format</span>
+      </label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        required
+      />
+    </div>
+    <div class="align medium-width">
+      <label [class.text-danger]="!registerForm.controls['password'].valid && showError" for="password">
+        Password <span style="text-transform: lowercase" *ngIf="!registerForm.controls['password'].valid && showError">- Password must be at least 3 characters</span>
+      </label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        required/>
+    </div>
+    <div class="align medium-width margin-center">
+      <button [disabled]="registerForm.valid && showError" [class.button-danger]="!registerForm.valid && showError" type="submit">Register</button>
+      <span class="to-login">Want to login ? <a routerLink="/login">Login</a></span>
+    </div>
+  </form>
+  <div class="right-register-container">
+    <div class="align text-center right-title">MusiK</div>
+    <div class="align text-center right-register-app-description">
+      Try the new app to explore your friends music taste !
+    </div>
+    <app-equalizer [numberOfBars]="26" [maxRegressionAnimation]="13"></app-equalizer>
+  </div>
+</div>

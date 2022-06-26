@@ -1,0 +1,42 @@
+<div [style.background-color]="hover ? backgroundOnHover : 'transparent'" (mouseover)="hover = true" (mouseleave)="hover = false" class="song-horizontal-view-container" *ngIf="song && author">
+  <div class="song-play-container align">
+    <span *ngIf="!hover && !isCurrentlyPlayed" class="text-center" [style.color]="isCurrentlyPlayed ? colorOnHover : 'rgb(220, 221, 222)'">{{index}}</span>
+    <svg *ngIf="hover && !isCurrentlyPlayed" (click)="change()" xmlns="http://www.w3.org/2000/svg"
+         class="margin-center bi bi-play-circle-fill play-pause" viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+    </svg>
+    <svg *ngIf="hover && isCurrentlyPlayed && state && state.playing" (click)="pause()" xmlns="http://www.w3.org/2000/svg"
+         class="margin-center bi bi-play-circle-fill play-pause" viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"/>
+    </svg>
+    <svg (click)="resume()" *ngIf="hover && isCurrentlyPlayed && state && !state.playing" xmlns="http://www.w3.org/2000/svg"
+         class="margin-center bi bi-play-circle-fill play-pause" viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+    </svg>
+    <div class="fit-height-width" *ngIf="!hover && isCurrentlyPlayed">
+      <app-equalizer class="margin-center" [numberOfBars]="5" [color]="colorOnHover" [pauseAnimation]="!!state && !state.playing" [regression]="10" [width]="50" [maxRegressionAnimation]="20" [frequency]="0.15" >
+      </app-equalizer>
+    </div>
+  </div>
+  <div class="miniature-container align">
+    <img class="miniature margin-center" alt="song-miniature" [src]="songMiniatureSrc"/>
+  </div>
+  <div [style.color]="isCurrentlyPlayed ? colorOnHover : 'rgb(220, 221, 222)'" class="song-name-container align-bottom song-name-margin">
+    {{song.name}}
+  </div>
+  <div class="song-author-features-container song-authors-margin">
+    {{authors}}
+  </div>
+  <div class="song-category-container align text-center">
+    {{song.category.name}}
+  </div>
+  <div class="song-number-of-listens-container align text-center">
+    {{song.numberOfListens}}
+  </div>
+  <div *ngIf="state" class="song-duration-container align text-center">
+    {{songDuration}}
+  </div>
+</div>

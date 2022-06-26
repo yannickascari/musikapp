@@ -1,0 +1,6 @@
+<div class="music-equalizer-background-container" [style.grid-template-columns]="numberOfBarsStr" [style.margin]="alignHorizontally ? '0 auto' : 'none'" [style.width]="widthStr" [style.height]="heightStr">
+  <div style="width: 100%;height: 100%" class="align" *ngFor="let item of [].constructor(numberOfBars);let i = index;">
+    <div [style.background-color]="this.color" [style.height]="getComponentHeight(i)" [style.transition]="transition" [style.transform]="malus[i]" class="margin-center music-equalizer-background-component">
+    </div>
+  </div>
+</div>

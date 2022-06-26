@@ -1,0 +1,5 @@
+<div class="modal-container" [style.overflow-y]="overflowY" [style.box-shadow]="boxShadow" [style.border-color]="borderColor" [style.background-color]="color" [style.width]="widthStr" [style.height]="heightStr" [style.left]="left" [style.top]="top" *ngIf="opened">
+  <ng-content></ng-content>
+</div>
+<div *ngIf="opened" class="modal-fade"></div>
+

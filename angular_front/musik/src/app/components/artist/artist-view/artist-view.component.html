@@ -1,0 +1,56 @@
+<div *ngIf="artist" class="artist-view-container">
+  <div class="top-container" [style.background]="background">
+    <div class="align avatar-position">
+      <img id="avatar" [src]="avatarUrl" class="avatar margin-center">
+    </div>
+    <div class="title">
+      <h1 class="align text-center">{{artist.name.charAt(0).toUpperCase() + artist.name.slice(1)}}</h1>
+    </div>
+    <div class="followers-followings align text-center">
+      <span (click)="modalFollowersOpened = true">{{artist.followers.length}} Followers</span>
+      <span (click)="modalFollowingsOpened = true">{{artist.followings.length}} Followings</span>
+    </div>
+  </div>
+  <div class="bottom-container">
+    <div class="align follow-button-position">
+      <button [disabled]="unableSelfFollow" (click)="followOrUnfollow()" class="margin-center follow-button transparent-button" [class.border-green]="isAlreadyFollowing">
+        {{ unableSelfFollow ? "It's me !" : isAlreadyFollowing ? "Following" : "Follow"}}
+      </button>
+    </div>
+    <div class="songs-title-container align">
+      Best songs !
+    </div>
+    <div class="songs-container">
+      <div class="song-container" *ngFor="let song of artist.songs;let i = index;">
+        <app-song-horizontal-view colorOnHover="cyan" [index]="i + 1" [author]="artist" [song]="song">
+        </app-song-horizontal-view>
+      </div>
+    </div>
+    <div class="featured-artists-title-container text-center align">
+      {{artist.name.charAt(0).toUpperCase() + artist.name.slice(1)}} featured artists
+    </div>
+    <div class="featured-artists-containers fit-height-width">
+      <div style="width: 50%;height: 50%;display: inline-block;" *ngFor="let a of this.featuredArtists">
+        <app-artist-badge-view (click)="changeArtist(a)" [artist]="a"></app-artist-badge-view>
+      </div>
+    </div>
+  </div>
+</div>
+<app-modal style="width: 100%;height: 100%" [width]="30" [opened]="modalFollowersOpened" color="#36393f">
+  <div style="height: 90%;width: 100%;overflow-y: auto">
+    <app-artist-horizontal-view [height]="10" [borderRadius]="10" *ngFor="let artist of this.followers" [artist]="artist">
+    </app-artist-horizontal-view>
+  </div>
+  <div style="height: 10%;width: 100%" class="align">
+    <button class="margin-center button-modal" (click)="closeModals()">Close</button>
+  </div>
+</app-modal>
+<app-modal style="width: 100%;height: 100%" [width]="30" [opened]="modalFollowingsOpened" color="#36393f">
+  <div style="height: 90%;width: 100%;overflow-y: auto">
+    <app-artist-horizontal-view [height]="10" [borderRadius]="10" *ngFor="let artist of this.followings" [artist]="artist">
+    </app-artist-horizontal-view>
+  </div>
+  <div style="height: 10%;width: 100%" class="align">
+    <button class="margin-center button-modal" (click)="closeModals()">Close</button>
+  </div>
+</app-modal>

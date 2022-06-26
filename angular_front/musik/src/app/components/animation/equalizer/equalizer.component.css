@@ -1,0 +1,11 @@
+.music-equalizer-background-component {
+  width: 50%;
+  height: 30%;
+  background-color: var(--not-quite-black);
+}
+
+.music-equalizer-background-container {
+  display: grid;
+  grid-template-rows: 1fr;
+  z-index: -1;
+}

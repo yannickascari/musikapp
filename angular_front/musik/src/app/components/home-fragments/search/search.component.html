@@ -1,0 +1,14 @@
+<div class="add-friends-container">
+  <div class="text-center">
+    <h3 class="align title">
+      Search and explore the application !
+    </h3>
+  </div>
+  <div>
+     <app-input-button buttonText="Search !" inputPlaceHolder="Type an artist or a song" [width]="80" [height]="40" fontSize="16px" (clickButton)="onSearch($event)" ></app-input-button>
+  </div>
+  <div>
+    <app-artist-horizontal-view [height]="15" [width]="95" *ngFor="let artist of this.searchValues" [artist]="artist">
+    </app-artist-horizontal-view>
+  </div>
+</div>

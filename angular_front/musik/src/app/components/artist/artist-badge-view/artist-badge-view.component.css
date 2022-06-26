@@ -1,0 +1,13 @@
+.artist-badge-view-container{
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+.artist-badge-view-container img {
+  border-radius: 50%;
+}
+
+.artist-name {
+  color: var(--text-normal);
+}

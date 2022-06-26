@@ -1,0 +1,7 @@
+<div class="progress-bar-container">
+  <div *ngIf="displayLabel" class="text-center align progress-value">{{progressLabel}}</div>
+  <div class="align bar-container">
+    <input [style.background]="change" (mouseover)="mouseover()" (mouseleave)="mouseleave()" (input)="move($event)" type="range" [ngClass]="{'slider-hover' : hover}" [max]="end" [(ngModel)]="progressTime" class="slider">
+  </div>
+  <div *ngIf="displayLabel" class="text-center align end-value">{{endLabel}}</div>
+</div>
